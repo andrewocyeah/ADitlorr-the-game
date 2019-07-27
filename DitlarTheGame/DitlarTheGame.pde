@@ -62,7 +62,7 @@ void draw(){
         push=false;
       }
     }else{
-      true;
+      push = true;
     }
     for(int f = 0;f < bx[place].length;f++){
       rect(bx[place][f],by[place][f],bw[place][f],bh[place][f]);
