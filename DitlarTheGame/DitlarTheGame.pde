@@ -21,7 +21,7 @@ void draw(){
     line(width/2,height/2+300,width/2+100,height/2+400);
     textSize(180);
     fill(0);
-    text("Ditlar the game.",width/2,200);
+    text("Aditlorr the game.",width/2,200);
   }
   if(mode==2){//game over screen
   }
