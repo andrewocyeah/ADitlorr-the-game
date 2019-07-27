@@ -36,7 +36,7 @@ void draw(){
           rect((width/2)-((inventory.length*90)/2)+(x*90),(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
           fill(0);
           textSize(10);
-          text("Thing",(width/2)-((inventory.length*90)/2)+(x*90)+40,(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
+          text(inventory[x][y],(width/2)-((inventory.length*90)/2)+(x*90)+40,(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
         }
       }
       if(keys[4]){
