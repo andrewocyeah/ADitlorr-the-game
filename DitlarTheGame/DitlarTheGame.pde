@@ -19,6 +19,7 @@ int dh[][]={{}};
 int di[][]={{}};
 int dnx[][]={{}};
 int dny[][]={{}};
+boolean push;//for the-involutary-spam bug
 int place = 0;
 boolean keys[] = new boolean[5];
 void setup(){
@@ -38,6 +39,14 @@ void draw(){
           text("Thing",(width/2)-((inventory.length*90)/2)+(x*90)+40,(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
         }
       }
+      if(keys[4]){
+        if(push){
+          menu=1;
+          push=false;
+        }
+      }else{
+        push = true;
+      }
     }  
     if(menu==0){
     background(0);
@@ -48,7 +57,12 @@ void draw(){
     if(keys[2]){y=y+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){y=y-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
     if(keys[3]){x=x+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){x=x-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
     if(keys[4]){
-      menu=1;
+      if(push){
+        menu=1;
+        push=false;
+      }
+    }else{
+      true;
     }
     for(int f = 0;f < bx[place].length;f++){
       rect(bx[place][f],by[place][f],bw[place][f],bh[place][f]);
