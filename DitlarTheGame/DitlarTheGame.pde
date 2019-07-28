@@ -3,11 +3,12 @@ int menu = 0;
 int x;
 int y;
 int speed=5;
+int t = 0;
 int bx[][]={{100,300,100,300}};//x position of walls
 int by[][]={{100,100,300,300}};//y position of walls
 int bw[][]={{100,100,100,100}};//width of walls
 int bh[][]={{100,100,100,100}};//height of walls
-int wx[][]={{100,300,100,300}};//x position of water tile
+int wx[][]={{700,900,700,900}};//x position of water tile
 int wy[][]={{100,100,300,300}};//y position of water tile
 int ww[][]={{100,100,100,100}};//width of water tile
 int wh[][]={{100,100,100,100}};//height of water tile
@@ -19,11 +20,15 @@ int dh[][]={{}};
 int di[][]={{}};
 int dnx[][]={{}};
 int dny[][]={{}};
+String da = "I Am Speaking";
+int len=0;
+int message=0;
 boolean push;//for the-involutary-spam bug
 int place = 0;
 boolean keys[] = new boolean[5];
 void setup(){
   fullScreen();//causes the game to be fullScreen
+  textAlign(CENTER);
 }
 void draw(){
   if(mode==0){//overworld map
@@ -36,7 +41,7 @@ void draw(){
           rect((width/2)-((inventory.length*90)/2)+(x*90),(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
           fill(0);
           textSize(10);
-          text(inventory[x][y],(width/2)-((inventory.length*90)/2)+(x*90)+40,(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
+          text("Thing",(width/2)-((inventory.length*90)/2)+(x*90)+40,(height/2)-((inventory[0].length*90)/2)+(y*90),80,80);
         }
       }
       if(keys[4]){
@@ -54,10 +59,11 @@ void draw(){
       translate(width/2-x,height/2-y);
       fill(255);
       rect(x,y,20,20);
+      
       if(keys[0]){y=y-speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){y=y+speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
-      if(keys[1]){x=x-speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){x=x+speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
-      if(keys[2]){y=y+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){y=y-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
-      if(keys[3]){x=x+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){x=x-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y+speed/2;}}}
+      if(keys[1]){x=x-speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){x=x+speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){x=x+speed/2;}}}
+      if(keys[2]){y=y+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){y=y-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){y=y-speed/2;}}}
+      if(keys[3]){x=x+speed;for(int f = 0;f < bx[place].length;f++){if(x+20>bx[place][f]&&x<bx[place][f]+bw[place][f]&&y+20>by[place][f]&&y<by[place][f]+bh[place][f]){x=x-speed;}}for(int f = 0;f < wx[place].length;f++){if(x+20>wx[place][f]&&x<wx[place][f]+ww[place][f]&&y+20>wy[place][f]&&y<wy[place][f]+wh[place][f]){x=x-speed/2;}}}
       if(keys[4]){
         if(push){
           menu=1;
@@ -67,8 +73,10 @@ void draw(){
         push = true;
       }
       for(int f = 0;f < bx[place].length;f++){
+        fill(255);
         rect(bx[place][f],by[place][f],bw[place][f],bh[place][f]);
       }
+      displayDialog("DEMO",x,y);
     } 
   }
   if(mode==1){//title screen
@@ -89,4 +97,10 @@ void keyReleased(){
   if(key=='s'){keys[2]=false;}
   if(key=='d'){keys[3]=false;}
   if(key=='i'){keys[4]=false;}
+}
+void displayDialog(String d,int x,int y){
+  fill(255);
+  rect(x-100,y-120,200,100,50);
+  fill(0); 
+  text(d,x,y-60);
 }
