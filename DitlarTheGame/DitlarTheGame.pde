@@ -53,6 +53,8 @@ int y;
 int speed=5;
 int money=100;
 int moneymax = 100;
+int energypoints;
+int energypointsmax;
 int wheelScroll;
 int t = 0;
 int bx[][]={{100,300,100,300}};//x position of walls
@@ -176,6 +178,15 @@ void draw(){
       translate(width/2-x,height/2-y);
       fill(255);
       rect(x,y,20,20);
+      fill(255);
+      rect(x-(width/2),y-(height/2)+20,100,20);
+      fill(0,255,0,100);
+      rect(x-(width/2),y-(height/2),map(energypoints,0,energypointsmax,0,100),20);
+      textSize(20);
+      fill(0);
+      text(money,x-(width/2)+50,y-(height/2)+10);
+      fill(255);
+      rect(x-(width/2),y-(height/2)+20,100,20);
       fill(0,255,0,100);
       rect(x-(width/2),y-(height/2),map(money,0,moneymax,0,100),20);
       textSize(20);
