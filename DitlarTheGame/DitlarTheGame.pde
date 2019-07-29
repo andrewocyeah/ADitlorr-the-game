@@ -20,6 +20,11 @@ int dh[][]={{}};
 int di[][]={{}};
 int dnx[][]={{}};
 int dny[][]={{}};
+String items[][]={
+{"Apple","20","0","5"},
+{"Shoe polish","15","1","5"},
+{"A strange thing","30","0","-5"}
+};
 String da = "I Am Speaking";
 int len=0;
 int message=0;
@@ -32,6 +37,13 @@ void setup(){
 }
 void draw(){
   if(mode==0){//overworld map
+    if(menu==2){
+      for(int g = 0;g < items.length;g++){
+        rect(width/2-100,g*60,200,50);
+        text(item[g][0],width/2,(g*60)+25);
+        
+      }
+    }
     if(menu==1){
       fill(155,10);
       rect(0,0,width,height);
